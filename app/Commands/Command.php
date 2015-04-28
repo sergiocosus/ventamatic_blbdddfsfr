@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace ventamatic\Commands;
 
 abstract class Command {
 
