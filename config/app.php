@@ -139,11 +139,11 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'ventamatic\Providers\AppServiceProvider',
-		'ventamatic\Providers\BusServiceProvider',
-		'ventamatic\Providers\ConfigServiceProvider',
-		'ventamatic\Providers\EventServiceProvider',
-		'ventamatic\Providers\RouteServiceProvider',
+		'Ventamatic\Providers\AppServiceProvider',
+		'Ventamatic\Providers\BusServiceProvider',
+		'Ventamatic\Providers\ConfigServiceProvider',
+		'Ventamatic\Providers\EventServiceProvider',
+		'Ventamatic\Providers\RouteServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
 
 	],

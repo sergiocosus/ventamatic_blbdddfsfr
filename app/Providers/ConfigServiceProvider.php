@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Providers;
+<?php namespace Ventamatic\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

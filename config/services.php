@@ -30,7 +30,7 @@ return [
 	],
 
 	'stripe' => [
-		'model'  => 'ventamatic\User',
+		'model'  => 'Ventamatic\User',
 		'key' => '',
 		'secret' => '',
 	],

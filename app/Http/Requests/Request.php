@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Http\Requests;
+<?php namespace Ventamatic\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

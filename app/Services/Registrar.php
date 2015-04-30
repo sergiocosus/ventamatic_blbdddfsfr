@@ -1,6 +1,6 @@
-<?php namespace ventamatic\Services;
+<?php namespace Ventamatic\Services;
 
-use ventamatic\User;
+use Ventamatic\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

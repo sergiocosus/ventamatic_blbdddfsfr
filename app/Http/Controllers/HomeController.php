@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Http\Controllers;
+<?php namespace Ventamatic\Http\Controllers;
 
 class HomeController extends Controller {
 

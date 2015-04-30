@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Providers;
+<?php namespace Ventamatic\Providers;
 
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +16,7 @@ class BusServiceProvider extends ServiceProvider {
 		$dispatcher->mapUsing(function($command)
 		{
 			return Dispatcher::simpleMapping(
-				$command, 'ventamatic\Commands', 'ventamatic\Handlers\Commands'
+				$command, 'Ventamatic\Commands', 'Ventamatic\Handlers\Commands'
 			);
 		});
 	}

@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Http;
+<?php namespace Ventamatic\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -15,7 +15,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'ventamatic\Http\Middleware\VerifyCsrfToken',
+		'Ventamatic\Http\Middleware\VerifyCsrfToken',
 	];
 
 	/**
@@ -24,9 +24,9 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'ventamatic\Http\Middleware\Authenticate',
+		'auth' => 'Ventamatic\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'ventamatic\Http\Middleware\RedirectIfAuthenticated',
+		'guest' => 'Ventamatic\Http\Middleware\RedirectIfAuthenticated',
 	];
 
 }

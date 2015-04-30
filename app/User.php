@@ -1,4 +1,4 @@
-<?php namespace ventamatic;
+<?php namespace Ventamatic;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,6 @@
-<?php namespace ventamatic\Http\Controllers\Auth;
+<?php namespace Ventamatic\Http\Controllers\Auth;
 
-use ventamatic\Http\Controllers\Controller;
+use Ventamatic\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;

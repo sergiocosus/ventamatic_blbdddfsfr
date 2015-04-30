@@ -1,4 +1,4 @@
-<?php namespace ventamatic\model;
+<?php namespace Ventamatic\model;
 
 use Illuminate\Database\Eloquent\Model;
 

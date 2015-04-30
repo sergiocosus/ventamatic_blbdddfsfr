@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: ventamatic
-        psr4_prefix: ventamatic
+        namespace: Ventamatic
+        psr4_prefix: Ventamatic
         src_path: app

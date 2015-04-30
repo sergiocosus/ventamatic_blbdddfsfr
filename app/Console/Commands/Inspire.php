@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Console\Commands;
+<?php namespace Ventamatic\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Http\Middleware;
+<?php namespace Ventamatic\Http\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;

@@ -1,4 +1,4 @@
-<?php namespace ventamatic\Providers;
+<?php namespace Ventamatic\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
