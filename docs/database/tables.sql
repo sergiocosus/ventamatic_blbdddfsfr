@@ -160,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `ventamatic`.`users` (
   `state_id` INT UNSIGNED NULL,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
+  `deleted_at` TIMESTAMP NULL,
   `password` VARCHAR(60) NULL,
   `remember_token` VARCHAR(100) NULL,
   PRIMARY KEY (`id`),
@@ -258,17 +259,35 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `ventamatic`.`categories`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ventamatic`.`categories` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `ventamatic`.`products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ventamatic`.`products` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_id` INT UNSIGNED NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `minimum` INT UNSIGNED NULL,
   `unit` ENUM('U','KG', 'L') NOT NULL COMMENT 'U=Unit\nKG=kilograms\nL=liter',
   `bar_code` VARCHAR(50) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC),
-  UNIQUE INDEX `bar_code_UNIQUE` (`bar_code` ASC))
+  UNIQUE INDEX `bar_code_UNIQUE` (`bar_code` ASC),
+  INDEX `fk_product_category_idx` (`category_id` ASC),
+  CONSTRAINT `fk_product_category`
+    FOREIGN KEY (`category_id`)
+    REFERENCES `ventamatic`.`categories` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
