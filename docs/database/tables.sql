@@ -10,10 +10,10 @@ USE `ventamatic` ;
 -- Table `ventamatic`.`states`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ventamatic`.`states` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` CHAR(2) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `nombre_UNIQUE` (`name` ASC))
+  `short` VARCHAR(10) NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -21,11 +21,10 @@ ENGINE = InnoDB;
 -- Table `ventamatic`.`municipalities`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ventamatic`.`municipalities` (
-  `id` INT UNSIGNED NOT NULL,
-  `state_id` INT UNSIGNED NOT NULL,
+  `id` CHAR(3) NOT NULL,
+  `state_id` CHAR(2) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`, `state_id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC),
   INDEX `fk_municipality_state_idx` (`state_id` ASC),
   CONSTRAINT `fk_municipality_state`
     FOREIGN KEY (`state_id`)
@@ -39,12 +38,11 @@ ENGINE = InnoDB;
 -- Table `ventamatic`.`localities`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ventamatic`.`localities` (
-  `id` INT UNSIGNED NOT NULL,
-  `municipality_id` INT UNSIGNED NOT NULL,
-  `state_id` INT UNSIGNED NOT NULL,
+  `id` CHAR(4) NOT NULL,
+  `municipality_id` CHAR(3) NOT NULL,
+  `state_id` CHAR(2) NOT NULL,
   `name` VARCHAR(100) NULL,
   PRIMARY KEY (`id`, `municipality_id`, `state_id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC),
   INDEX `fk_locality_municipality_idx` (`municipality_id` ASC),
   INDEX `fk_locality_state_idx` (`state_id` ASC),
   CONSTRAINT `fk_locality_municipality`
@@ -73,9 +71,9 @@ CREATE TABLE IF NOT EXISTS `ventamatic`.`clients` (
   `adress` VARCHAR(100) NULL,
   `email` VARCHAR(200) NULL,
   `rfc` VARCHAR(20) NULL,
-  `locality_id` INT UNSIGNED NULL,
-  `municipality_id` INT UNSIGNED NULL,
-  `state_id` INT UNSIGNED NULL,
+  `locality_id` CHAR(4) NULL,
+  `municipality_id` CHAR(3) NULL,
+  `state_id` CHAR(2) NULL,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`),
@@ -114,9 +112,9 @@ CREATE TABLE IF NOT EXISTS `ventamatic`.`providers` (
   `adress` VARCHAR(100) NULL,
   `email` VARCHAR(200) NULL,
   `rfc` VARCHAR(20) NULL,
-  `locality_id` INT UNSIGNED NULL,
-  `municipality_id` INT UNSIGNED NULL,
-  `state_id` INT UNSIGNED NULL,
+  `locality_id` CHAR(4) NULL,
+  `municipality_id` CHAR(3) NULL,
+  `state_id` CHAR(2) NULL,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`),
@@ -155,9 +153,9 @@ CREATE TABLE IF NOT EXISTS `ventamatic`.`users` (
   `adress` VARCHAR(100) NULL,
   `email` VARCHAR(200) NULL,
   `rfc` VARCHAR(20) NULL,
-  `locality_id` INT UNSIGNED NULL,
-  `municipality_id` INT UNSIGNED NULL,
-  `state_id` INT UNSIGNED NULL,
+  `locality_id` CHAR(4) NULL,
+  `municipality_id` CHAR(3) NULL,
+  `state_id` CHAR(2) NULL,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
   `deleted_at` TIMESTAMP NULL,
@@ -192,6 +190,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ventamatic`.`branches` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
+  `ticket_name` VARCHAR(60) NULL,
+  `ticket_head` VARCHAR(255) NULL,
+  `ticket_foot` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB;
@@ -412,6 +413,41 @@ CREATE TABLE IF NOT EXISTS `ventamatic`.`sale_product` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ventamatic`.`category`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ventamatic`.`category` (
+  `category_id` INT NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`category_id`));
+
+
+-- -----------------------------------------------------
+-- Table `ventamatic`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ventamatic`.`user` (
+  `username` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NULL,
+  `password` VARCHAR(32) NOT NULL,
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP);
+
+
+-- -----------------------------------------------------
+-- Table `ventamatic`.`timestamps`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ventamatic`.`timestamps` (
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` TIMESTAMP NULL);
+
+
+-- -----------------------------------------------------
+-- Table `ventamatic`.`timestamps_1`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ventamatic`.`timestamps_1` (
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` TIMESTAMP NULL);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

@@ -1,5 +1,5 @@
 <?php namespace Ventamatic\Http\Controllers;
-
+use Ventamatic\Model\Place\State;
 class WelcomeController extends Controller {
 
 	/*
@@ -30,6 +30,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+                        return State::find('01')->municipalities()->get()[3]->toJson();
                 return view('welcome');
 	}
 
